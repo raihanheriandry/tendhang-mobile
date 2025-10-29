@@ -22,7 +22,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Mengubah latar belakang halaman menjadi putih
+      backgroundColor: Colors.white, 
       appBar: AppBar(
         title: const Text(
           'Tendhang',
@@ -121,7 +121,7 @@ class ItemHomepage {
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
-  final Color color; // Properti baru untuk warna latar belakang
+  final Color color; 
 
   const ItemCard(this.item, this.color, {super.key});
 

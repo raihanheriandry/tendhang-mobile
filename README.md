@@ -63,4 +63,4 @@ Misalnya, jika sedang berada di halaman tertentu dan melakukan hot reload, posis
 
 Navigasi antar layar di Flutter dilakukan menggunakan Navigator. Untuk berpindah ke layar lain, digunakan perintah `Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanTujuan()))`, yang akan menambahkan layar baru ke atas tumpukan (stack) navigasi. Untuk kembali ke layar sebelumnya, digunakan `Navigator.pop(context)`. Selain itu, Flutter juga mendukung sistem named routes, di mana setiap halaman diberi nama unik dan navigasi dilakukan dengan `Navigator.pushNamed(context, '/halaman')`. Sistem ini membuat pengelolaan rute lebih rapi dan mudah saat aplikasi semakin kompleks.
 
-Untuk saat ini, kode kamu belum memiliki navigasi antar halaman karena semua fungsi tombol masih menampilkan SnackBar.
+Tapi sekarang, projek ini belum memiliki navigasi antar halaman karena semua fungsi tombol masih menampilkan SnackBar.

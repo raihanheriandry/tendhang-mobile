@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tendhang_mobile/menu.dart';
+import 'package:tendhang_mobile/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,11 +29,36 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.yellow)
-            .copyWith(secondary: Colors.yellowAccent[100]),
+        fontFamily: 'Poppins',
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color(0xFFFEFCE8),
+          secondary: const Color(0xFF0E7490),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color.fromARGB(255, 255, 255, 255),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 157, 158, 148),
+              width: 1.5,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: const Color(0xFF0E7490), width: 2),
+          ),
+        ),
+        switchTheme: SwitchThemeData(
+          thumbColor: WidgetStatePropertyAll(
+            const Color(0xFF0E7490),
+          ), 
+          trackColor: WidgetStatePropertyAll(
+            Color.fromARGB(255, 206, 206, 206),
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
   }
 }
-

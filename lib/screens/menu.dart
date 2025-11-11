@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tendhang_mobile/widgets/left_drawer.dart';
+import 'package:tendhang_mobile/widgets/item_card.dart';
+
 
 final List<Color> cardColors = [
   Colors.blue.shade600,
@@ -14,25 +17,26 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("All Products", Icons.newspaper),
-    ItemHomepage("My Products", Icons.add),
-    ItemHomepage("Create Product", Icons.logout),
+    ItemHomepage("All Products", Icons.grid_view),
+    ItemHomepage("My Products", Icons.inventory_2_outlined),
+    ItemHomepage("Add Product", Icons.add),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, 
+      backgroundColor: Theme.of(context).colorScheme.primary, 
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Tendhang',
           style: TextStyle(
-            color: Colors.black,
+            color: Theme.of(context).colorScheme.secondary,
             fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      drawer: LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -119,47 +123,3 @@ class ItemHomepage {
   ItemHomepage(this.name, this.icon);
 }
 
-class ItemCard extends StatelessWidget {
-  final ItemHomepage item;
-  final Color color; 
-
-  const ItemCard(this.item, this.color, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: color, // Menggunakan warna yang diberikan
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-                SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
-            );
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

@@ -10,57 +10,28 @@ Where Kickers Find Their Gear
 
 ### 📚 Archive Tugas Mobile
    - [Tugas 7 PBP 2025/2026](https://github.com/raihanheriandry/tendhang-mobile/wiki/Tugas-Individu-7)
+   - [Tugas 8 PBP 2025/2026](https://github.com/raihanheriandry/tendhang-mobile/wiki/Tugas-Individu-8)
 
 ---
 
-## Tugas Individu 7 - Elemen Dasar Flutter
+## Tugas Individu 8 - Flutter Navigation, Layouts, Forms, and Input Elements
 
-### Jelaskan apa itu widget tree pada Flutter dan bagaimana hubungan parent-child (induk-anak) bekerja antar widget.
-Dalam Flutter, seluruh tampilan aplikasi dibangun menggunakan struktur yang disebut widget tree. 
-- Widget tree adalah susunan hierarki dari widget, di mana setiap elemen di layar merupakan bagian dari sebuah pohon widget. 
+### Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
 
-Pada dasarnya, setiap widget bisa memiliki child (anak) atau children (beberapa anak) yang akan menjadi bagian visual atau fungsional di dalamnya. Hubungan parent–child berarti widget induk bertanggung jawab atas tata letak dan perilaku widget anak di dalamnya. Misalnya, Column sebagai parent dapat memiliki beberapa Text atau Container sebagai children, dan parent inilah yang menentukan bagaimana posisi dan ukuran setiap child diatur di layar.
+Navigator.push() digunakan untuk menambahkan halaman baru ke dalam stack navigasi sehingga pengguna masih dapat kembali ke halaman sebelumnya menggunakan tombol back. Sebaliknya, Navigator.pushReplacement() menggantikan halaman yang sedang aktif dengan halaman baru, sehingga pengguna tidak dapat kembali ke halaman sebelumnya. Pada aplikasi Football Shop ini, Navigator.push() cocok digunakan saat pengguna berpindah dari halaman daftar produk ke halaman detail produk karena pengguna mungkin ingin kembali untuk melihat produk lainnya. Sementara itu, Navigator.pushReplacement() lebih tepat digunakan setelah pengguna menyelesaikan suatu aksi yang sifatnya final, misalnya setelah menekan tombol “Simpan” pada form tambah produk atau setelah proses login, karena pengguna tidak perlu kembali ke halaman form atau login tersebut.
 
-### Sebutkan semua widget yang kamu gunakan dalam proyek ini dan jelaskan fungsinya.
+### Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
 
-Widget yang digunakan pada proyek ini antara lain:
-- MaterialApp → Sebagai root aplikasi, menyediakan tema dan konfigurasi navigasi.
-- Scaffold → Menyediakan struktur dasar halaman seperti AppBar, body, dan latar belakang.
-- AppBar → Menampilkan judul aplikasi “Tendhang” di bagian atas layar.
-- Column & Row → Mengatur tata letak widget secara vertikal dan horizontal.
-- Card (pada InfoCard) → Menampilkan data pribadi seperti NPM, Nama, dan Kelas dengan tampilan kotak rapi.
-- GridView.count → Menampilkan item dalam bentuk grid 3 kolom.
-- Container → Mengatur padding dan ukuran elemen.
-- Text dan Icon → Menampilkan teks dan ikon untuk setiap item.
-- Material & InkWell → Memberikan efek klik dan interaksi dengan pengguna.
-- SnackBar → Menampilkan pesan sementara ketika item ditekan.
+Hierarki widget seperti Scaffold, AppBar, dan Drawer digunakan untuk menciptakan struktur halaman yang konsisten di seluruh aplikasi Football Shop. Scaffold berfungsi sebagai kerangka dasar halaman yang menyediakan ruang untuk konten utama dan komponen antarmuka lainnya. AppBar digunakan untuk menampilkan judul halaman atau tombol aksi seperti ikon kembali dan menu, sehingga pengguna mudah mengenali konteks halaman yang sedang dibuka. Drawer digunakan untuk menyediakan menu navigasi samping agar pengguna dapat berpindah antar halaman seperti Dashboard, Produk, dan Pengaturan dengan cara yang mudah dan konsisten. Dengan menggunakan ketiga widget ini secara konsisten, pengalaman navigasi pada aplikasi menjadi lebih terstruktur dan familiar untuk pengguna.
 
-Semua widget ini bekerja sama untuk membangun antarmuka aplikasi dengan gaya Material Design
+### Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
 
-### Apa fungsi dari widget MaterialApp? Jelaskan mengapa widget ini sering digunakan sebagai widget root.
+Penggunaan widget layout seperti Padding, SingleChildScrollView, dan ListView membantu menyusun tampilan form agar lebih nyaman digunakan dan responsif. Padding memberikan ruang di sekitar elemen sehingga tampilan tidak terlihat terlalu rapat dan lebih mudah dibaca. SingleChildScrollView memungkinkan seluruh konten form di-scroll, sehingga tetap dapat diakses meskipun konten panjang atau layar perangkat kecil. ListView digunakan untuk menampilkan elemen-elemen input secara vertikal dengan pengaturan tata letak otomatis. Contoh penerapannya dalam aplikasi Football Shop adalah halaman tambah produk, di mana setiap field input seperti nama produk, harga, stok, dan deskripsi dibungkus dengan Padding agar memiliki jarak antar elemen, dan keseluruhan form dimasukkan ke dalam SingleChildScrollView untuk mencegah tampilan terpotong ketika keyboard muncul.
 
-MaterialApp merupakan widget utama yang biasanya diletakkan di bagian root aplikasi Flutter berbasis Material Design. Fungsinya adalah menyediakan konfigurasi dasar aplikasi seperti tema (theme), navigasi (routes), judul (title), dan pengaturan tampilan lainnya. MaterialApp juga secara otomatis mengintegrasikan berbagai elemen Material Design seperti warna, ikon, dan animasi standar. Karena fungsinya yang menyeluruh dan menjadi fondasi dari gaya visual aplikasi, widget ini hampir selalu digunakan sebagai widget root di aplikasi Flutter.
+### Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
 
-### Jelaskan perbedaan antara StatelessWidget dan StatefulWidget. Kapan kamu memilih salah satunya?
-
-- `StatelessWidget` adalah widget yang tidak memiliki state atau kondisi yang dapat berubah selama aplikasi berjalan. Contohnya adalah widget yang hanya menampilkan teks statis. 
-- `StatefulWidget` memiliki state yang dapat berubah seiring waktu dan menyebabkan tampilan diperbarui (rebuild). Misalnya, tombol yang mengubah warna ketika ditekan membutuhkan StatefulWidget, seperti awal create project flutter. 
-
-Pemilihan di antara keduanya tergantung pada apakah widget memerlukan perubahan tampilan dinamis. Jika iya, gunakan StatefulWidget; jika tidak, StatelessWidget sudah cukup. Pada proyek ini sejauh ini cuma StatelessWidget
-
-### Apa itu BuildContext dan mengapa penting di Flutter? Bagaimana penggunaannya di metode build?
-
-`BuildContext` adalah objek penting yang merepresentasikan lokasi sebuah widget dalam widget tree. Ia digunakan oleh Flutter untuk mengetahui posisi widget dan memungkinkan widget berinteraksi dengan elemen lain di atasnya dalam hierarki, seperti mengakses tema atau melakukan navigasi. Dalam metode `build(BuildContext context)`, parameter context digunakan untuk mendapatkan informasi tentang lingkungan widget tersebut, seperti memanggil `Theme.of(context)` untuk mengambil data tema atau `Navigator.of(context)` untuk berpindah halaman. Tanpa `BuildContext`, Flutter tidak bisa memahami hubungan antar-widget di pohon widget.
-
-### Jelaskan konsep "hot reload" di Flutter dan bagaimana bedanya dengan "hot restart".
-
-- Hot reload adalah fitur di Flutter yang memungkinkan pengembang memperbarui kode dan melihat hasil perubahan secara instan tanpa kehilangan state aplikasi. Misalnya, jika kamu sedang berada di halaman kedua aplikasi dan mengubah tampilan teks, hasilnya akan langsung muncul tanpa kembali ke halaman awal. 
-- Hot restart akan me-restart seluruh aplikasi dari awal, termasuk menghapus semua state yang tersimpan. 
-
-Misalnya, jika sedang berada di halaman tertentu dan melakukan hot reload, posisi layar tetap sama. Namun dengan hot restart, aplikasi akan kembali ke halaman MyHomePage() awal.
-
-### Jelaskan bagaimana kamu menambahkan navigasi untuk berpindah antar layar di aplikasi Flutter.
-
-Navigasi antar layar di Flutter dilakukan menggunakan Navigator. Untuk berpindah ke layar lain, digunakan perintah `Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanTujuan()))`, yang akan menambahkan layar baru ke atas tumpukan (stack) navigasi. Untuk kembali ke layar sebelumnya, digunakan `Navigator.pop(context)`. Selain itu, Flutter juga mendukung sistem named routes, di mana setiap halaman diberi nama unik dan navigasi dilakukan dengan `Navigator.pushNamed(context, '/halaman')`. Sistem ini membuat pengelolaan rute lebih rapi dan mudah saat aplikasi semakin kompleks.
-
-Tapi sekarang, projek ini belum memiliki navigasi antar halaman karena semua fungsi tombol masih menampilkan SnackBar.
+Warna aplikasi saya set pada main.dart yaitu pada 
+`colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color(0xFFFEFCE8),
+          secondary: const Color(0xFF0E7490),
+        ),` yang mana ini sesuai dengan warna pada versi web nya, diset juga ada 2 warna utama yang digunakan, sehingga warna kedepannya konsisten dengan brand toko

@@ -4,9 +4,9 @@ import 'package:tendhang_mobile/widgets/item_card.dart';
 
 
 final List<Color> cardColors = [
-  Colors.blue.shade600,
-  Colors.green.shade600,
-  Colors.red.shade600,
+  const Color.fromARGB(255, 108, 12, 94),
+  const Color.fromARGB(255, 134, 89, 41),
+  const Color.fromARGB(255, 235, 175, 237),
 ];
 
 class MyHomePage extends StatelessWidget {

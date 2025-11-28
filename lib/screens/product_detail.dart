@@ -39,7 +39,6 @@ class ProductDetailPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Featured badge (mirip news)
                   if (product.isFeatured)
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -70,7 +69,6 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  // Category badge (mirip news)
                   Row(
                     children: [
                       Container(
@@ -146,7 +144,6 @@ class ProductDetailPage extends StatelessWidget {
 
                   const Divider(height: 32),
 
-                  // Description (mirip news content)
                   Text(
                     product.description,
                     textAlign: TextAlign.justify,

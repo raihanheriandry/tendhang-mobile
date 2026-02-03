@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tendhang_mobile/models/product_entry.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  final ProductEntry product;
+  final Product product;
 
   const ProductDetailPage({super.key, required this.product});
 
@@ -11,9 +11,9 @@ class ProductDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Detail'),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,6 +145,19 @@ class ProductDetailPage extends StatelessWidget {
                   const Divider(height: 32),
 
                   Text(
+                    'Seller: ${product.seller}',
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      height: 1.4,
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                  
+
+                  const SizedBox(height: 24),
+
+                  Text(
                     product.description,
                     textAlign: TextAlign.justify,
                     style: const TextStyle(
@@ -152,8 +165,6 @@ class ProductDetailPage extends StatelessWidget {
                       height: 1.6,
                     ),
                   ),
-
-                  const SizedBox(height: 24),
                 ],
               ),
             ),

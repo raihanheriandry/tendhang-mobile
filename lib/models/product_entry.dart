@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final productEntry = productEntryFromJson(jsonString);
+//     final product = productFromJson(jsonString);
 
 import 'dart:convert';
 
-List<ProductEntry> productEntryFromJson(String str) => List<ProductEntry>.from(json.decode(str).map((x) => ProductEntry.fromJson(x)));
+List<Product> productFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
-String productEntryToJson(List<ProductEntry> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String productToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ProductEntry {
+class Product {
     String id;
     String name;
     int price;
@@ -19,9 +19,9 @@ class ProductEntry {
     int sold;
     bool isFeatured;
     String size;
-    int idUser;
+    String seller;
 
-    ProductEntry({
+    Product({
         required this.id,
         required this.name,
         required this.price,
@@ -32,10 +32,10 @@ class ProductEntry {
         required this.sold,
         required this.isFeatured,
         required this.size,
-        required this.idUser,
+        required this.seller,
     });
 
-    factory ProductEntry.fromJson(Map<String, dynamic> json) => ProductEntry(
+    factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
         name: json["name"],
         price: json["price"],
@@ -46,7 +46,7 @@ class ProductEntry {
         sold: json["sold"],
         isFeatured: json["is_featured"],
         size: json["size"],
-        idUser: json["id_user"],
+        seller: json["seller"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -60,6 +60,6 @@ class ProductEntry {
         "sold": sold,
         "is_featured": isFeatured,
         "size": size,
-        "id_user": idUser,
+        "seller": seller,
     };
 }

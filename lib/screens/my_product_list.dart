@@ -6,20 +6,20 @@ import 'package:tendhang_mobile/screens/product_detail.dart';
 import 'package:tendhang_mobile/widgets/left_drawer.dart';
 import 'package:tendhang_mobile/widgets/product_entry_card.dart';
 
-class ProductEntryListPage extends StatefulWidget {
-  const ProductEntryListPage({super.key});
+class MyProductEntryListPage extends StatefulWidget {
+  const MyProductEntryListPage({super.key});
 
   @override
-  State<ProductEntryListPage> createState() => _ProductEntryListPageState();
+  State<MyProductEntryListPage> createState() => _MyProductEntryListPageState();
 }
 
-class _ProductEntryListPageState extends State<ProductEntryListPage> {
+class _MyProductEntryListPageState extends State<MyProductEntryListPage> {
   Future<List<Product>> fetchNews(CookieRequest request) async {
     // TODO: Replace the URL with your app's URL and don't forget to add a trailing slash (/)!
     // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
     // If you using chrome,  use URL http://localhost:8000
 
-    final response = await request.get('http://localhost:8000/json/');
+    final response = await request.get('http://localhost:8000/json-my/');
 
     // Decode response to json format
     var data = response;
@@ -38,7 +38,7 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      appBar: AppBar(title: const Text('All Product List'), backgroundColor: Theme.of(context).colorScheme.primary,),
+      appBar: AppBar(title: const Text('My Product List'), backgroundColor: Theme.of(context).colorScheme.primary,),
       drawer: const LeftDrawer(),
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: FutureBuilder(

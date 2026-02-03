@@ -1,30 +1,8 @@
-import 'package:tendhang_mobile/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:tendhang_mobile/screens/menu.dart';
 import 'package:tendhang_mobile/screens/register.dart';
-
-void main() {
-  runApp(const LoginApp());
-}
-
-class LoginApp extends StatelessWidget {
-  const LoginApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.blue,
-        ).copyWith(secondary: Colors.blueAccent[400]),
-      ),
-      home: const LoginPage(),
-    );
-  }
-}
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -42,17 +20,22 @@ class _LoginPageState extends State<LoginPage> {
     final request = context.watch<CookieRequest>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(30.0),
           child: Card(
-            elevation: 8,
+            color: Theme.of(context).colorScheme.primary,
+            // elevation: 8,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
+              side: BorderSide(
+                color: Colors.grey,
+                width: 2,
+              ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -60,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                     'Login',
                     style: TextStyle(
                       fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 30.0),
@@ -99,6 +82,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () async {
                       String username = _usernameController.text;
                       String password = _passwordController.text;
+
+                      // Check credentials
+                      // TODO: Change the URL and don't forget to add trailing slash (/) at the end of URL!
+                      // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
+                      // If you using chrome,  use URL http://localhost:8000
                       final response = await request.login(
                         "http://localhost:8000/auth/login/",
                         {'username': username, 'password': password},
@@ -110,9 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (context.mounted) {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => MyHomePage(),
-                            ),
+                            MaterialPageRoute(builder: (context) => HomePage()),
                           );
                           ScaffoldMessenger.of(context)
                             ..hideCurrentSnackBar()
@@ -131,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                               content: Text(response['message']),
                               actions: [
                                 TextButton(
-                                  child: const Text('OK'),
+                                  child: const Text('OK', style: TextStyle(color: Colors.red),),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -145,12 +131,12 @@ class _LoginPageState extends State<LoginPage> {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
                     child: const Text('Login'),
                   ),
-                  const SizedBox(height: 36.0),
+                  const SizedBox(height: 20.0),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -163,8 +149,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       'Don\'t have an account? Register',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontSize: 16.0,
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: 14.0,
                       ),
                     ),
                   ),

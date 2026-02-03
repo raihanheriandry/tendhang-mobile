@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tendhang_mobile/screens/add_product.dart';
 import 'package:tendhang_mobile/screens/menu.dart';
-import 'package:tendhang_mobile/screens/product_form.dart';
 import 'package:tendhang_mobile/screens/product_entry_list.dart';
+import 'package:tendhang_mobile/screens/my_product_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -18,24 +19,16 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Tendhang',
+                  'Tendhang\nFootball Store',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                Text(
-                  "Where Kickers Find Their Gear",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Theme.of(context).colorScheme.secondary,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                Text("Where Kickers Find Their Gear", style: TextStyle()),
               ],
             ),
           ),
@@ -47,7 +40,7 @@ class LeftDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => MyHomePage()),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             },
           ),
@@ -55,22 +48,38 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.add_box_outlined),
             title: const Text('Add Product'),
+            // Bagian redirection ke MyHomePage
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => ProductFormPage()),
+                MaterialPageRoute(builder: (context) => AddProduct()),
               );
             },
           ),
 
           ListTile(
-            leading: const Icon(Icons.add_reaction_rounded),
-            title: const Text('Product List'),
+            leading: const Icon(Icons.storefront_outlined),
+            title: const Text('All Product List'),
             onTap: () {
+              // Route to news list page
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProductEntryListPage(),
+                ),
+              );
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.inventory_2_outlined),
+            title: const Text('My Product List'),
+            onTap: () {
+              // Route to news list page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyProductEntryListPage(),
                 ),
               );
             },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tendhang_mobile/models/product_entry.dart';
 
 class ProductEntryCard extends StatelessWidget {
-  final ProductEntry product;
+  final Product product;
   final VoidCallback onTap;
 
   const ProductEntryCard({
@@ -22,6 +22,7 @@ class ProductEntryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             side: BorderSide(color: Colors.grey.shade300),
           ),
+          color: Theme.of(context).colorScheme.primary,
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -71,13 +72,35 @@ class ProductEntryCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Rp ${product.price.toStringAsFixed(0)}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF0E7490),
+                      ),
+                    ),
+                    Text(
+                      'Stok: ${product.stock}',
+                      style: TextStyle(
+                        color: product.stock > 0 ? Colors.green : Colors.red,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+
                 // Featured indicator
                 if (product.isFeatured)
                   const Text(
                     'Featured',
                     style: TextStyle(
                       color: Colors.amber,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
               ],
